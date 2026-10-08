@@ -12,6 +12,12 @@ python3 -m http.server 4310
 
 http://localhost:4310/ (`?noanim` を付けると現れる動きなしで全部表示)
 
+## 公開URL
+
+https://pocowan-seiya.github.io/leaders-2026/ (GitHub Pages / リポジトリ pocowan-seiya/leaders-2026 の main 直下を配信。`noindex` で検索には出さない)
+
+更新するときは、変更を commit して `git push` するだけ(反映まで1〜2分)。
+
 ## ファイル
 
 - `index.html` — 本文と構成(セクションごとにコメントあり)
@@ -40,4 +46,4 @@ http://localhost:4310/ (`?noanim` を付けると現れる動きなしで全部�
   - 手書きロゴ: `images/school-handwriting-white.png`(FV用に白化)/ `school-handwriting.png`(青・お申し込み欄)— 公式サイトの素材を水平に直したもの
 - 受講料「200万円」の税表記、日程、定員、グループクラスの回数
 - 申込方法(フォーム or 公式サイトのお問い合わせ)
-- 公開先(GitHub Pages など)。公開までは `noindex`
+- 正式公開のタイミングで `noindex` を外すかどうか
