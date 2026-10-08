@@ -169,8 +169,8 @@ figure {
   z-index: 2;
   pointer-events: none;
   background:
-    radial-gradient(62% 54% at 50% 50%, rgba(5, 14, 36, 0.6) 0%, rgba(5, 14, 36, 0.32) 62%, rgba(5, 14, 36, 0) 100%),
-    linear-gradient(180deg, rgba(5, 14, 36, 0.3) 0%, rgba(5, 14, 36, 0.08) 42%, rgba(5, 14, 36, 0.12) 72%, rgba(5, 14, 36, 0) 84%),
+    radial-gradient(64% 56% at 50% 50%, rgba(5, 14, 36, 0.68) 0%, rgba(5, 14, 36, 0.4) 62%, rgba(5, 14, 36, 0) 100%),
+    linear-gradient(180deg, rgba(5, 14, 36, 0.36) 0%, rgba(5, 14, 36, 0.14) 42%, rgba(5, 14, 36, 0.16) 72%, rgba(5, 14, 36, 0) 84%),
     linear-gradient(180deg, rgba(250, 252, 253, 0) 82%, rgba(250, 252, 253, 0.55) 93%, var(--ground) 100%);
 }
 
@@ -715,9 +715,7 @@ figure {
 
 /* 最後の一段 —— じぶんへの扉 */
 .ls-given .ls-given-key {
-  font-weight: 700;
-  font-size: 1.16em;
-  letter-spacing: 0.12em;
+  font-weight: 600;
   color: #f7e2ae;
 }
 
@@ -1492,7 +1490,7 @@ figure {
 
   .ls-fv-veil {
     background:
-      linear-gradient(180deg, rgba(5, 14, 36, 0.5) 0%, rgba(5, 14, 36, 0.34) 48%, rgba(5, 14, 36, 0.22) 76%, rgba(5, 14, 36, 0) 86%),
+      linear-gradient(180deg, rgba(5, 14, 36, 0.58) 0%, rgba(5, 14, 36, 0.44) 48%, rgba(5, 14, 36, 0.3) 76%, rgba(5, 14, 36, 0) 86%),
       linear-gradient(180deg, rgba(250, 252, 253, 0) 86%, rgba(250, 252, 253, 0.6) 95%, var(--ground) 100%);
   }
 
