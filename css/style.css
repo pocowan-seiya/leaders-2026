@@ -1150,6 +1150,132 @@ figure {
 }
 
 /* ============================================================
+   5.5 スケジュール —— 一本の光の軌道に、月ごとの光の粒
+   ============================================================ */
+
+.ls-schedule-sec {
+  background: linear-gradient(180deg, var(--ground) 0%, var(--tint) 50%, var(--ground) 100%);
+}
+
+.ls-schedule {
+  position: relative;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 560px;
+  text-align: left;
+}
+
+/* 縦に通る光の線 */
+.ls-schedule::before {
+  content: "";
+  position: absolute;
+  left: 112px;
+  top: 30px;
+  bottom: 30px;
+  width: 1px;
+  background: linear-gradient(180deg, rgba(176, 145, 79, 0) 0%, rgba(176, 145, 79, 0.6) 10%, rgba(176, 145, 79, 0.6) 90%, rgba(176, 145, 79, 0) 100%);
+}
+
+.ls-sch-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 112px 1fr;
+  column-gap: 34px;
+  padding: 22px 0;
+}
+
+/* 線の上の光の粒 */
+.ls-sch-row::before {
+  content: "";
+  position: absolute;
+  left: 112px;
+  top: 34px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, #fffaf0 0%, var(--dawn) 55%, var(--gold-pale) 100%);
+  box-shadow: 0 0 10px 3px rgba(243, 217, 164, 0.7), 0 0 22px 6px rgba(195, 228, 248, 0.5);
+}
+
+.ls-sch-month {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 6px;
+  padding-right: 24px;
+  font-family: var(--font-display);
+  font-variant-numeric: lining-nums;
+  color: var(--gold);
+  line-height: 1.2;
+}
+
+.ls-sch-year {
+  font-size: 15px;
+  letter-spacing: 0.06em;
+}
+
+.ls-sch-m {
+  font-size: 34px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.ls-sch-title {
+  font-family: var(--font-mincho);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  color: var(--ink-violet);
+}
+
+.ls-sch-date {
+  margin-top: 6px;
+  font-family: var(--font-mincho);
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+}
+
+.ls-sch-place {
+  margin-top: 4px;
+  font-size: 13.5px;
+  letter-spacing: 0.06em;
+  color: var(--ink-sub);
+}
+
+/* 個別セッション —— 期間をとおして */
+.ls-sch-session {
+  max-width: 560px;
+  margin: 40px auto 0;
+  padding: 26px 24px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(176, 145, 79, 0.35);
+  border-radius: 6px;
+  box-shadow: 0 10px 34px rgba(143, 195, 212, 0.2);
+}
+
+.ls-sch-session-title {
+  font-family: var(--font-mincho);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0.14em;
+  color: var(--ink-violet);
+}
+
+.ls-sch-session-text {
+  margin: 8px 0 0;
+  font-family: var(--font-mincho);
+  font-weight: 500;
+  font-size: 15.5px;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+}
+
+/* ============================================================
    6. お申し込み
    ============================================================ */
 
@@ -1630,6 +1756,63 @@ figure {
 
   .ls-apply {
     padding-bottom: 120px;
+  }
+
+  .ls-schedule::before,
+  .ls-sch-row::before {
+    left: 78px;
+  }
+
+  .ls-sch-row {
+    grid-template-columns: 78px 1fr;
+    column-gap: 22px;
+    padding: 18px 0;
+  }
+
+  .ls-sch-month {
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 0;
+    padding-right: 18px;
+  }
+
+  .ls-sch-year {
+    font-size: 13px;
+  }
+
+  .ls-sch-m {
+    font-size: 30px;
+  }
+
+  .ls-sch-row::before {
+    top: 44px;
+  }
+
+  .ls-sch-title {
+    font-size: 16px;
+    letter-spacing: 0.08em;
+  }
+
+  .ls-sch-date {
+    font-size: 14.5px;
+    letter-spacing: 0.04em;
+  }
+
+  .ls-sch-place {
+    font-size: 12.5px;
+  }
+
+  .ls-sch-session {
+    padding: 22px 16px;
+  }
+
+  .ls-sch-session-title {
+    font-size: 16.5px;
+  }
+
+  .ls-sch-session-text {
+    font-size: 14.5px;
   }
 
   .ls-apply-ask {
