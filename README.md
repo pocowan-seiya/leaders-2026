@@ -17,6 +17,7 @@ http://localhost:4310/ (`?noanim` を付けると現れる動きなしで全部�
 https://pocowan-seiya.github.io/leaders-2026/ (GitHub Pages / リポジトリ pocowan-seiya/leaders-2026 の main 直下を配信。`noindex` で検索には出さない)
 
 更新するときは、変更を commit して `git push` するだけ(反映まで1〜2分)。
+CSS/JSを変えたときは、index.html の `style.css?v=` / `main.js?v=` の数字も更新する(ブラウザに古いデザインが残らないように)。
 
 ## ファイル
 
