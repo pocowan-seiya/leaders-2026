@@ -721,11 +721,6 @@ figure {
   color: #f7e2ae;
 }
 
-/* リストのあとの「それが　生き方になる」 */
-.ls-given-after {
-  margin-top: 1.6em;
-}
-
 /* 「その上で」—— 上下に一本の光の柱 */
 .ls-pivot {
   position: relative;
