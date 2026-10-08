@@ -909,6 +909,27 @@ figure {
   color: var(--ink-sub);
 }
 
+/* 回数(見出しのすぐ下) */
+.ls-card-count {
+  margin: 10px 0 0;
+  font-family: var(--font-mincho);
+  font-weight: 700;
+  font-size: clamp(20px, 3.8vw, 24px);
+  letter-spacing: 0.14em;
+  color: var(--ink-violet);
+}
+
+.ls-card-count small {
+  margin-left: 0.3em;
+  font-size: 0.66em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.ls-card-main .ls-card-count {
+  color: var(--dawn);
+}
+
 /* 見出しと本文のあいだ —— 短い光の罫と、その中心にひと粒の光 */
 .ls-card-divider {
   position: relative;
@@ -1142,6 +1163,49 @@ figure {
   width: min(460px, 82%);
   height: auto;
   margin: 0 auto 64px;
+}
+
+/* お申し込み / お問い合わせ の2つのブロック */
+.ls-apply-block .ls-cta {
+  margin-top: 36px;
+}
+
+.ls-apply-ask {
+  margin-top: 88px;
+  padding-top: 72px;
+  border-top: 1px solid var(--hairline);
+}
+
+.ls-apply-ask .ls-copy {
+  font-size: clamp(16px, 3.6vw, 18px);
+}
+
+.ls-apply-ask-note {
+  margin: 18px 0 0;
+  font-size: 14.5px;
+  line-height: 2;
+  letter-spacing: 0.08em;
+  color: var(--ink-sub);
+}
+
+/* お問い合わせは控えめに —— 白地に金の縁 */
+.ls-cta.ls-cta-sub {
+  padding: 18px 56px;
+  font-size: clamp(16px, 3.6vw, 18px);
+  color: var(--ink-violet);
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(176, 145, 79, 0.7);
+  box-shadow: 0 10px 30px rgba(143, 195, 212, 0.25);
+  animation: none;
+}
+
+.ls-cta.ls-cta-sub::before {
+  display: none;
+}
+
+.ls-cta.ls-cta-sub:hover,
+.ls-cta.ls-cta-sub:focus-visible {
+  box-shadow: 0 14px 36px rgba(176, 145, 79, 0.3);
 }
 
 /* 申し込みボタン —— 夜明けの光をまとった、ここから始まる合図 */
@@ -1566,6 +1630,15 @@ figure {
 
   .ls-apply {
     padding-bottom: 120px;
+  }
+
+  .ls-apply-ask {
+    margin-top: 64px;
+    padding-top: 56px;
+  }
+
+  .ls-cta.ls-cta-sub {
+    padding: 16px 36px;
   }
 
   .ls-cta {
