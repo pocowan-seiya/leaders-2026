@@ -671,6 +671,11 @@ figure {
   font-weight: 600;
 }
 
+/* 「想像もしていなかったじぶんに…」「もともとの光として…」はひとまわり控えめに */
+.ls-space .ls-return .ls-copy-big {
+  font-size: clamp(20px, 4.6vw, 26px);
+}
+
 .ls-space .ls-mark::before {
   border-top-color: rgba(243, 217, 164, 0.6);
 }
@@ -1600,6 +1605,10 @@ figure {
     font-size: 21px;
     line-height: 2;
     letter-spacing: 0.08em;
+  }
+
+  .ls-space .ls-return .ls-copy-big {
+    font-size: 19px;
   }
 
   .ls-h2,
