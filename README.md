@@ -41,8 +41,8 @@ https://pocowan-seiya.github.io/leaders-2026/ (GitHub Pages / リポジトリ po
 - 写真: 宇宙から地球を見た写真/あやこさんの写真が届いたら `images/` を差し替え
   - 背景の地球: `images/space-earth.jpg`(FV・宇宙セクション)
   - クラス概要の背景: `images/earth-clouds.jpg`(公式サイトの地球の写真を地平線から切り出し)
-  - 序の写真: `images/ayako-speaking-mint.jpg`(公式サイトトップの _MG_4715 をトリミング)。前の候補 `ayako-open-arms.jpg`(_MG_4679)も残してある
-  - プロフィール写真: `images/ayako-hero.webp`
+  - 序の写真: `images/ayako-speaking-mint.jpg`(公式サイトトップの _MG_4715 をトリミングし、中間の明るさを持ち上げたもの)。前の候補 `ayako-open-arms.jpg`(_MG_4679)も残してある
+  - プロフィール写真: `images/ayako-profile-bright.jpg`(中間の明るさを持ち上げたもの)
   - 手書きロゴ: `images/school-handwriting-white.png`(FV用に白化)/ `school-handwriting.png`(青・お申し込み欄)— 公式サイトの素材を水平に直したもの
 - 受講料「200万円」の税表記、日程、定員、グループクラスの回数
 - 申込方法(フォーム or 公式サイトのお問い合わせ)
