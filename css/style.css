@@ -1823,6 +1823,11 @@ figure {
     padding: 16px 36px;
   }
 
+  .ls-card-links a {
+    font-size: 13px;
+    letter-spacing: 0.04em;
+  }
+
   .ls-cta {
     margin-top: 44px;
     padding: 20px 46px;
