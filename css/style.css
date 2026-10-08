@@ -982,7 +982,8 @@ figure {
 }
 
 .ls-card-links a::after {
-  content: " →";
+  /* 矢印だけが次の行に落ちないよう、改行しない空白でつなぐ */
+  content: "\00a0→";
   font-family: var(--font-display);
   color: var(--gold);
 }
