@@ -1328,35 +1328,25 @@ figure {
     margin-top: 38px;
   }
 
-  /* スマホは2行のロックアップ: 大きな「リーダーズ」と「スペースシップクラス」を同じ幅に
-     --col = 手書きロゴ・題字・英語の共通の幅 */
+  /* スマホは2行。ひとつの名前として、同じ大きさ・同じ字間・同じ色で
+     --col = 手書きロゴ・題字(2行目)・英語の共通の幅 */
   .ls-fv-center {
     --col: min(calc(100vw - 48px), 420px);
   }
 
   .ls-fv-title-ja {
-    --y: calc(var(--col) / 10.8);
-    font-size: var(--y);
+    font-size: calc(var(--col) / 10.8);
+    line-height: 1.42;
+    letter-spacing: 0.08em;
     text-indent: 0;
+    /* 1行ごとに 白 → 下端だけ夜明けの黄金 */
+    background-size: 260% 100%, 100% 1.42em;
+    background-repeat: no-repeat, repeat-y;
   }
 
   .ls-t1,
   .ls-t2 {
     display: block;
-  }
-
-  /* 5文字 × 1.5倍 × 字間0.44em = 10文字 × 字間0.08em と同じ幅 */
-  .ls-t1 {
-    font-size: 1.5em;
-    line-height: 1.25;
-    letter-spacing: 0.44em;
-    margin-right: -0.44em;
-  }
-
-  .ls-t2 {
-    margin-top: 0.2em;
-    line-height: 1.4;
-    letter-spacing: 0.08em;
     margin-right: -0.08em;
   }
 
