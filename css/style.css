@@ -752,11 +752,6 @@ figure {
   background: linear-gradient(90deg, rgba(243, 217, 164, 0) 0%, rgba(243, 217, 164, 0.85) 50%, rgba(243, 217, 164, 0) 100%);
 }
 
-/* 結びの一行 —— 夜明けの黄金で */
-.ls-way {
-  color: #f7e2ae;
-}
-
 /* 当たり前のリスト —— 足場のように、一段ずつ */
 .ls-given {
   list-style: none;
