@@ -387,6 +387,12 @@ figure {
   text-shadow: 0 1px 1.5px rgba(2, 10, 30, 0.55);
 }
 
+.ls-fv-amp {
+  margin: 0 0.25em;
+  font-weight: 500;
+  color: var(--dawn);
+}
+
 .ls-fv-meta i {
   width: 5px;
   height: 5px;
@@ -1643,28 +1649,21 @@ figure {
     margin-top: 38px;
   }
 
-  /* スマホも1行。「リーダーズスペースシップクラス」をひとつの名前として、
-     手書きロゴ・英語と同じ幅(--col)いっぱいに。?t2 を付けると2行版で比べられる */
+  /* スマホは2行。ひとつの名前として、同じ大きさ・同じ字間・同じ色で
+     --col = 手書きロゴ・題字(2行目)・英語の共通の幅 */
   .ls-fv-center {
     --col: min(calc(100vw - 48px), 420px);
   }
 
   .ls-fv-title-ja {
-    font-size: calc(var(--col) / 15.7);
-    line-height: 1.4;
-    letter-spacing: 0.05em;
-    text-indent: 0.05em;
-  }
-
-  .ls-title-2 .ls-fv-title-ja {
     font-size: calc(var(--col) / 10.8);
     line-height: 1.42;
     letter-spacing: 0.08em;
     text-indent: 0;
   }
 
-  .ls-title-2 .ls-t1,
-  .ls-title-2 .ls-t2 {
+  .ls-t1,
+  .ls-t2 {
     display: block;
     margin-right: -0.08em;
   }
@@ -1710,7 +1709,7 @@ figure {
     flex-basis: 100%;
   }
 
-  .ls-fv-meta i:first-of-type {
+  .ls-fv-meta i {
     display: none;
   }
 

@@ -3,9 +3,6 @@
   var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var skipAnimation = prefersReduced || window.location.search.indexOf("noanim") !== -1;
 
-  // 比較用: ?t2 でスマホの題字を2行版に
-  if (window.location.search.indexOf("t2") !== -1) document.querySelector(".ls").classList.add("ls-title-2");
-
   // 1. スクロールで静かに現れる(JS が動かなくても全文は読める)
   var targets = document.querySelectorAll(".ls-reveal");
   // ファーストビューの現れ方も止めて、最初から全部見せる
