@@ -240,7 +240,7 @@ figure {
      上の層は、ときどき文字を流れる光の帯 */
   background:
     linear-gradient(105deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 45%, #ffffff 50%, rgba(255, 255, 255, 0) 55%, rgba(255, 255, 255, 0) 100%) 100% 0 / 260% 100% no-repeat,
-    linear-gradient(180deg, #ffffff 0%, #ffffff 52%, #f6e6bd 82%, #edd396 100%) 0 0 / 100% 100% no-repeat;
+    linear-gradient(180deg, #ffffff 0%, #ffffff 100%) 0 0 / 100% 100% no-repeat;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -364,19 +364,35 @@ figure {
   transform: translateY(-0.5em);
 }
 
-.ls-fv-meta {
-  margin-top: 6px;
-  font-family: var(--font-mincho);
-  font-weight: 600;
-  font-size: clamp(14px, 1.25vw, 18px);
-  letter-spacing: 0.2em;
-  color: rgba(242, 248, 252, 0.94);
-}
 
 .ls-fv-name,
 .ls-fv-title-en,
 .ls-fv-date {
   text-shadow: 0 1px 1.5px rgba(2, 10, 30, 0.55);
+}
+
+/* 期間と構成 —— 題字と同じ凛とした白で、光の粒で区切る */
+.ls-fv-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 6px 16px;
+  margin-top: 14px;
+  font-family: var(--font-mincho);
+  font-weight: 600;
+  font-size: clamp(15px, 1.35vw, 19px);
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  text-shadow: 0 1px 1.5px rgba(2, 10, 30, 0.55);
+}
+
+.ls-fv-meta i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fff8e8;
+  box-shadow: 0 0 8px 2px rgba(243, 217, 164, 0.85);
 }
 
 /* 現れる順番: 名前と手書き → 題字が光の中から → 英語・弧・日付 */
@@ -584,7 +600,7 @@ figure {
 
 /* 銘板の下 —— スタートの時期 */
 .ls-start {
-  margin: 30px 0 0;
+  margin: 34px 0 0;
   font-family: var(--font-mincho);
   font-weight: 600;
   font-size: clamp(17px, 3.8vw, 21px);
@@ -593,10 +609,24 @@ figure {
 }
 
 .ls-start-date {
-  color: var(--ink-sky);
-  font-size: 1.12em;
+  font-size: 1.14em;
   letter-spacing: 0.08em;
   font-variant-numeric: lining-nums;
+  background: linear-gradient(105deg, #0a5fe0 0%, #0a5fe0 38%, #ffe9b0 50%, #0a5fe0 62%, #0a5fe0 100%) 100% 0 / 300% 100% no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: ls-start-shine 5s ease-in-out 1s infinite;
+}
+
+@keyframes ls-start-shine {
+  0% {
+    background-position: 100% 0;
+  }
+  45%,
+  100% {
+    background-position: 0% 0;
+  }
 }
 
 /* 銘板の下の、あやこさんの写真 */
@@ -1324,6 +1354,22 @@ figure {
   color: var(--ink-sub);
 }
 
+.ls-sch-venue {
+  margin: 36px 0 0;
+  font-family: var(--font-mincho);
+  font-weight: 600;
+  font-size: 16.5px;
+  letter-spacing: 0.1em;
+  color: var(--ink-violet);
+}
+
+.ls-sch-venue-label {
+  margin-right: 1em;
+  font-size: 0.82em;
+  letter-spacing: 0.24em;
+  color: var(--gold);
+}
+
 /* 個人セッション —— 期間をとおして */
 .ls-sch-session {
   max-width: 560px;
@@ -1541,6 +1587,7 @@ figure {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .ls-start-date,
   .ls-fv-bg,
   .ls-fv-stars,
   .ls-fv-title-ja,
@@ -1596,24 +1643,28 @@ figure {
     margin-top: 38px;
   }
 
-  /* スマホは2行。ひとつの名前として、同じ大きさ・同じ字間・同じ色で
-     --col = 手書きロゴ・題字(2行目)・英語の共通の幅 */
+  /* スマホも1行。「リーダーズスペースシップクラス」をひとつの名前として、
+     手書きロゴ・英語と同じ幅(--col)いっぱいに。?t2 を付けると2行版で比べられる */
   .ls-fv-center {
     --col: min(calc(100vw - 48px), 420px);
   }
 
   .ls-fv-title-ja {
+    font-size: calc(var(--col) / 15.7);
+    line-height: 1.4;
+    letter-spacing: 0.05em;
+    text-indent: 0.05em;
+  }
+
+  .ls-title-2 .ls-fv-title-ja {
     font-size: calc(var(--col) / 10.8);
     line-height: 1.42;
     letter-spacing: 0.08em;
     text-indent: 0;
-    /* 1行ごとに 白 → 下端だけ夜明けの黄金 */
-    background-size: 260% 100%, 100% 1.42em;
-    background-repeat: no-repeat, repeat-y;
   }
 
-  .ls-t1,
-  .ls-t2 {
+  .ls-title-2 .ls-t1,
+  .ls-title-2 .ls-t2 {
     display: block;
     margin-right: -0.08em;
   }
@@ -1648,9 +1699,19 @@ figure {
     gap: 10px;
   }
 
+  /* 1行目に「5ヶ月間」、2行目に「少人数グループクラス ・ 個人セッション」 */
   .ls-fv-meta {
-    font-size: 13.5px;
+    gap: 4px 12px;
+    font-size: 14px;
     letter-spacing: 0.12em;
+  }
+
+  .ls-fv-meta-item:first-child {
+    flex-basis: 100%;
+  }
+
+  .ls-fv-meta i:first-of-type {
+    display: none;
   }
 
   .ls-fv-scroll {
