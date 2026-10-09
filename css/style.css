@@ -1304,7 +1304,7 @@ figure {
 }
 
 .ls-ov-venue {
-  margin: 10px 0 0;
+  margin: 24px 0 0;
   font-family: var(--font-mincho);
   font-weight: 600;
   font-size: 17px;
@@ -1319,84 +1319,43 @@ figure {
   color: var(--gold);
 }
 
-/* リアルクラスの日程 —— 横一本の光の線に、全10回の光の粒(日付の間隔のまま) */
-.ls-inner.ls-voyage {
-  max-width: 1000px;
+/* リアルクラスの日程 —— 2列×5行で、すっきりと */
+.ls-dates {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 250px));
+  grid-template-rows: repeat(5, auto);
+  grid-auto-flow: column;
+  justify-content: center;
+  column-gap: 56px;
+  list-style: none;
+  margin: 18px auto 0;
+  padding: 0;
 }
 
-.ls-voyage-svg {
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: 14px auto 0;
-  overflow: visible;
+.ls-date {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 11px 8px;
+  border-bottom: 1px solid rgba(176, 145, 79, 0.22);
 }
 
-.ls-voyage-path {
-  stroke-dasharray: 1100;
-  stroke-dashoffset: 0;
-  transition: stroke-dashoffset 2.8s cubic-bezier(0.45, 0.05, 0.25, 1) 0.3s;
-}
-
-.ls-voyage-pt {
-  opacity: 1;
-  transition: opacity 0.9s ease calc(0.6s + var(--i) * 0.22s);
-}
-
-/* スクロールで入ってきたら、軌道が描かれ、光の粒が順に灯る */
-.ls-js .ls-voyage:not(.is-in) .ls-voyage-path {
-  stroke-dashoffset: 1100;
-}
-
-.ls-js .ls-voyage:not(.is-in) .ls-voyage-pt {
-  opacity: 0;
-}
-
-.ls-voyage-pt circle {
-  fill: #fff8e8;
-  stroke: var(--gold);
-  stroke-width: 1.2;
-  filter: drop-shadow(0 0 6px rgba(243, 217, 164, 0.95)) drop-shadow(0 0 14px rgba(195, 228, 248, 0.7));
-}
-
-.ls-voyage-svg text {
-  text-anchor: middle;
-  font-variant-numeric: lining-nums;
-}
-
-.ls-voyage-no {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 17px;
-  fill: var(--gold);
-}
-
-.ls-voyage-date {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 27px;
-  letter-spacing: 0.04em;
-  fill: var(--ink-violet);
-}
-
-.ls-voyage-wd {
+.ls-date-no {
+  min-width: 3.6em;
   font-family: var(--font-mincho);
   font-weight: 600;
-  font-size: 15px;
-  fill: var(--ink);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--gold);
 }
 
-.ls-voyage-year {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 17px;
-  letter-spacing: 0.12em;
-  fill: var(--gold);
-}
-
-/* スマホは縦の軌道で */
-.ls-voyage-list {
-  display: none;
+.ls-date-day {
+  font-family: var(--font-mincho);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: var(--ink-violet);
+  font-variant-numeric: lining-nums;
 }
 
 /* ============================================================
@@ -2068,15 +2027,27 @@ figure {
     padding-bottom: 120px;
   }
 
-  .ls-voyage-svg {
-    display: none;
+  .ls-dates {
+    column-gap: 14px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
   }
 
-  .ls-voyage-list {
-    display: block;
-    width: 100%;
-    margin-top: 14px;
-    text-align: left;
+  .ls-date {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 9px 0 10px;
+  }
+
+  .ls-date-no {
+    min-width: 0;
+    font-size: 12px;
+  }
+
+  .ls-date-day {
+    font-size: 16px;
+    letter-spacing: 0.04em;
   }
 
   .ls-ov-row {
