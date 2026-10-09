@@ -1228,6 +1228,205 @@ figure {
 }
 
 /* ============================================================
+   5. クラス概要 —— 3つの要点と、5ヶ月の航路
+   ============================================================ */
+
+/* 期間・会場・受講料 */
+.ls-keyfacts {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr 0.9fr;
+  margin: 8px auto 0;
+  max-width: 780px;
+}
+
+.ls-kf {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+}
+
+/* あいだに縦の光の罫 */
+.ls-kf + .ls-kf::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10%;
+  bottom: 10%;
+  width: 1px;
+  background: linear-gradient(180deg, rgba(176, 145, 79, 0) 0%, rgba(176, 145, 79, 0.6) 50%, rgba(176, 145, 79, 0) 100%);
+}
+
+.ls-kf-label {
+  font-family: var(--font-mincho);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;
+  color: var(--gold);
+}
+
+.ls-kf-value {
+  font-family: var(--font-mincho);
+  font-weight: 600;
+  font-size: clamp(19px, 2.1vw, 24px);
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+  color: var(--ink-violet);
+  font-variant-numeric: lining-nums;
+  white-space: nowrap;
+}
+
+.ls-kf-sub {
+  font-family: var(--font-mincho);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  color: var(--ink);
+}
+
+/* 5ヶ月の航路 —— 軌道は横に広く */
+.ls-inner.ls-voyage {
+  max-width: 1000px;
+  margin-top: 96px;
+}
+
+.ls-voyage-head {
+  margin: 0;
+  font-family: var(--font-mincho);
+  font-weight: 600;
+  font-size: clamp(17px, 2vw, 20px);
+  letter-spacing: 0.24em;
+  text-indent: 0.24em;
+  color: var(--ink-violet);
+}
+
+.ls-voyage-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 18px auto 0;
+  overflow: visible;
+}
+
+.ls-voyage-path {
+  stroke-dasharray: 1100;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 2.8s cubic-bezier(0.45, 0.05, 0.25, 1) 0.3s;
+}
+
+.ls-voyage-pt {
+  opacity: 1;
+  transition: opacity 0.9s ease calc(0.6s + var(--i) * 0.22s);
+}
+
+/* スクロールで入ってきたら、軌道が描かれ、光の粒が順に灯る */
+.ls-js .ls-voyage:not(.is-in) .ls-voyage-path {
+  stroke-dashoffset: 1100;
+}
+
+.ls-js .ls-voyage:not(.is-in) .ls-voyage-pt {
+  opacity: 0;
+}
+
+.ls-voyage-pt circle {
+  fill: #fff8e8;
+  stroke: var(--gold-pale);
+  stroke-width: 1;
+  filter: drop-shadow(0 0 6px rgba(243, 217, 164, 0.95)) drop-shadow(0 0 14px rgba(195, 228, 248, 0.7));
+}
+
+.ls-voyage-svg text {
+  text-anchor: middle;
+  font-variant-numeric: lining-nums;
+}
+
+.ls-voyage-no {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 17px;
+  fill: var(--gold);
+}
+
+.ls-voyage-date {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 27px;
+  letter-spacing: 0.04em;
+  fill: var(--ink-violet);
+}
+
+.ls-voyage-wd {
+  font-family: var(--font-mincho);
+  font-weight: 600;
+  font-size: 15px;
+  fill: var(--ink);
+}
+
+.ls-voyage-year {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 17px;
+  letter-spacing: 0.12em;
+  fill: var(--gold);
+}
+
+/* スマホは縦の軌道で */
+.ls-voyage-list {
+  display: none;
+}
+
+/* 含まれるもの */
+.ls-includes {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 600px;
+}
+
+.ls-includes li {
+  position: relative;
+  padding: 18px 0 20px;
+  font-family: var(--font-mincho);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  line-height: 1.8;
+  color: var(--ink-violet);
+}
+
+.ls-includes li + li::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: min(320px, 70%);
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, rgba(176, 145, 79, 0) 0%, rgba(176, 145, 79, 0.5) 50%, rgba(176, 145, 79, 0) 100%);
+}
+
+.ls-inc-name {
+  display: block;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;
+  color: var(--gold);
+}
+
+.ls-includes small {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--font-gothic);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--ink-sub);
+}
+
+/* ============================================================
    5.5 スケジュール —— 一本の光の軌道に、月ごとの光の粒
    ============================================================ */
 
@@ -1894,6 +2093,38 @@ figure {
 
   .ls-apply {
     padding-bottom: 120px;
+  }
+
+  .ls-keyfacts {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .ls-kf + .ls-kf::before {
+    left: 50%;
+    top: -9px;
+    bottom: auto;
+    width: 120px;
+    height: 1px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, rgba(176, 145, 79, 0) 0%, rgba(176, 145, 79, 0.6) 50%, rgba(176, 145, 79, 0) 100%);
+  }
+
+  .ls-inner.ls-voyage {
+    margin-top: 72px;
+  }
+
+  .ls-voyage-svg {
+    display: none;
+  }
+
+  .ls-voyage-list {
+    display: block;
+    margin-top: 24px;
+  }
+
+  .ls-includes li {
+    font-size: 16px;
   }
 
   .ls-schedule::before,
