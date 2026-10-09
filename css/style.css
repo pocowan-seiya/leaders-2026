@@ -569,6 +569,28 @@ figure {
   color: var(--gold);
 }
 
+/* クラス名はPCでは1行のまま(スマホだけ2行に分ける) */
+.ls-name-plate-ja .nb {
+  display: inline;
+}
+
+/* 銘板の下 —— スタートの時期 */
+.ls-start {
+  margin: 30px 0 0;
+  font-family: var(--font-mincho);
+  font-weight: 600;
+  font-size: clamp(17px, 3.8vw, 21px);
+  letter-spacing: 0.16em;
+  color: var(--ink-violet);
+}
+
+.ls-start-date {
+  color: var(--ink-sky);
+  font-size: 1.12em;
+  letter-spacing: 0.08em;
+  font-variant-numeric: lining-nums;
+}
+
 /* 銘板の下の、あやこさんの写真 */
 .ls-intro-photo {
   position: relative;
@@ -1632,6 +1654,10 @@ figure {
 
   .ls-name-plate {
     padding: 20px 8px 18px;
+  }
+
+  .ls-name-plate-ja .nb {
+    display: block;
   }
 
   .ls-intro-photo {
