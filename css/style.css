@@ -735,6 +735,11 @@ figure {
   border-top-color: rgba(243, 217, 164, 0.6);
 }
 
+/* まとまりの中で、ほんの少し間をあける段落 */
+.ls-group .ls-copy.ls-copy-gap {
+  margin-top: 2.2em;
+}
+
 /* まとまりの区切り —— 上に一本の光の罫 */
 .ls-part {
   position: relative;
