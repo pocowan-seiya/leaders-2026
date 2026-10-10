@@ -168,11 +168,11 @@ figure {
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  /* 画面全体に、うすく均一な黒のオーバーレイ(地球の明るさは残しつつ、白い文字が雲にとけないように)。
-     下端は次のセクションの白へつなぐ */
+  /* 暗くするのは、明るい地球の上に乗る文字のまわりだけ(題字〜日付〜2行)。
+     それ以外の地球と宇宙は明るいまま。下端は次のセクションの白へつなぐ */
   background:
     linear-gradient(180deg, rgba(250, 252, 253, 0) 82%, rgba(250, 252, 253, 0.55) 93%, var(--ground) 100%),
-    linear-gradient(rgba(4, 12, 30, 0.26), rgba(4, 12, 30, 0.26));
+    radial-gradient(ellipse 50% 32% at 50% 58%, rgba(4, 12, 30, 0.46) 0%, rgba(4, 12, 30, 0.32) 50%, rgba(4, 12, 30, 0.12) 78%, rgba(4, 12, 30, 0) 100%);
 }
 
 /* 比較用: ?veil で、前の(うっすら暗いオーバーレイありの)状態 */
@@ -1757,7 +1757,7 @@ figure {
   .ls-fv-veil {
     background:
       linear-gradient(180deg, rgba(250, 252, 253, 0) 86%, rgba(250, 252, 253, 0.6) 95%, var(--ground) 100%),
-      linear-gradient(rgba(4, 12, 30, 0.26), rgba(4, 12, 30, 0.26));
+      radial-gradient(ellipse 75% 26% at 50% 47%, rgba(4, 12, 30, 0.46) 0%, rgba(4, 12, 30, 0.3) 45%, rgba(4, 12, 30, 0.1) 75%, rgba(4, 12, 30, 0) 100%);
   }
 
   .ls-veil-on .ls-fv-veil {
