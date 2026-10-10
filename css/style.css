@@ -410,11 +410,8 @@ figure {
   content: none;
   position: absolute;
   z-index: -1;
-  left: 50%;
-  top: 50%;
-  width: calc(100% + 360px);
-  height: calc(100% + 190px);
-  transform: translate(-50%, -50%);
+  /* 中央寄せは inset で(transform は現れる動きに上書きされて、右下にずれるため) */
+  inset: -95px -180px;
   pointer-events: none;
   background: radial-gradient(closest-side, rgba(4, 12, 30, 0.32) 0%, rgba(4, 12, 30, 0.26) 40%, rgba(4, 12, 30, 0.1) 74%, rgba(4, 12, 30, 0) 100%);
   animation: ls-fv-fade 1.4s cubic-bezier(0.22, 0.61, 0.36, 1) 2.6s both;
@@ -1812,8 +1809,7 @@ figure {
   /* 日付と2行は、明るい雲の上でもはっきり読めるよう、うしろのシャドウを少し深く広く */
   .ls-fv-info::before {
     content: "";
-    width: calc(100% + 300px);
-    height: calc(100% + 170px);
+    inset: -85px -150px;
     background: radial-gradient(closest-side, rgba(4, 12, 30, 0.5) 0%, rgba(4, 12, 30, 0.4) 45%, rgba(4, 12, 30, 0.16) 76%, rgba(4, 12, 30, 0) 100%);
   }
 
