@@ -373,16 +373,12 @@ figure {
 
 /* 期間と構成 —— 題字と同じ凛とした白で、光の粒で区切る */
 .ls-fv-meta {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 6px 16px;
-  margin-top: 14px;
+  margin-top: 16px;
   font-family: var(--font-mincho);
   font-weight: 600;
   font-size: clamp(15px, 1.35vw, 19px);
-  letter-spacing: 0.2em;
+  line-height: 1.9;
+  letter-spacing: 0.16em;
   color: #ffffff;
   text-shadow: 0 1px 1.5px rgba(2, 10, 30, 0.55);
 }
@@ -391,14 +387,6 @@ figure {
   margin: 0 0.25em;
   font-weight: 500;
   color: var(--dawn);
-}
-
-.ls-fv-meta i {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #fff8e8;
-  box-shadow: 0 0 8px 2px rgba(243, 217, 164, 0.85);
 }
 
 /* 現れる順番: 名前と手書き → 題字が光の中から → 英語・弧・日付 */
@@ -1834,19 +1822,10 @@ figure {
     gap: 10px;
   }
 
-  /* 1行目に「5ヶ月間」、2行目に「少人数グループクラス ・ 個人セッション」 */
   .ls-fv-meta {
-    gap: 4px 12px;
-    font-size: 14px;
-    letter-spacing: 0.12em;
-  }
-
-  .ls-fv-meta-item:first-child {
-    flex-basis: 100%;
-  }
-
-  .ls-fv-meta i {
-    display: none;
+    margin-top: 14px;
+    font-size: 13.5px;
+    letter-spacing: 0.06em;
   }
 
   .ls-fv-scroll {
