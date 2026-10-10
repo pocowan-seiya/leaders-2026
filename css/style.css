@@ -238,7 +238,8 @@ figure {
 .ls-fv-title-ja {
   font-family: var(--font-mincho);
   font-weight: 700;
-  font-size: clamp(26px, min(4vw, 6.9vh), 56px);
+  /* PCも2行(リーダーズ/スペースシップクラス)。行が短くなるぶん大きく */
+  font-size: clamp(30px, min(4.6vw, 7.6vh), 66px);
   line-height: 1.35;
   letter-spacing: 0.14em;
   text-indent: 0.14em;
@@ -258,15 +259,21 @@ figure {
     ls-title-sweep 7s ease-in-out 3.4s infinite;
 }
 
-/* 比較用 ?line2: PCの題字も2行に(リーダーズ/スペースシップクラス)。行が短くなるぶん大きく */
+/* 題字はPCでも2行 —— 同じ大きさ・同じ字間・同じ色で、ひとつの名前として */
+.ls-t1,
+.ls-t2 {
+  display: block;
+}
+
+/* 比較用 ?line1: PCの題字を1行に */
 @media (min-width: 768px) {
-  .ls-line2 .ls-t1,
-  .ls-line2 .ls-t2 {
-    display: block;
+  .ls-line1 .ls-t1,
+  .ls-line1 .ls-t2 {
+    display: inline;
   }
 
-  .ls-line2 .ls-fv-title-ja {
-    font-size: clamp(30px, min(4.6vw, 7.6vh), 66px);
+  .ls-line1 .ls-fv-title-ja {
+    font-size: clamp(26px, min(4vw, 6.9vh), 56px);
   }
 }
 
@@ -388,6 +395,28 @@ figure {
 .ls-fv-title-en,
 .ls-fv-date {
   text-shadow: 0 1px 1.5px rgba(2, 10, 30, 0.55);
+}
+
+/* 日付と2行のまとまり —— 明るい雲の上でも読めるよう、うしろに題字と同じうっすら黒のシャドウ */
+.ls-fv-info {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ls-fv-info::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 50%;
+  width: calc(100% + 360px);
+  height: calc(100% + 190px);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  background: radial-gradient(closest-side, rgba(4, 12, 30, 0.32) 0%, rgba(4, 12, 30, 0.26) 40%, rgba(4, 12, 30, 0.1) 74%, rgba(4, 12, 30, 0) 100%);
+  animation: ls-fv-fade 1.4s cubic-bezier(0.22, 0.61, 0.36, 1) 2.6s both;
 }
 
 /* 期間と構成 —— 題字と同じ凛とした白で、光の粒で区切る */
