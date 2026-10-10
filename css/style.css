@@ -449,7 +449,7 @@ figure {
   /* 中央寄せは inset で(transform は現れる動きに上書きされて、右下にずれるため) */
   inset: -60px -200px -130px;
   pointer-events: none;
-  background: radial-gradient(closest-side, rgba(4, 12, 30, 0.2) 0%, rgba(4, 12, 30, 0.15) 45%, rgba(4, 12, 30, 0.06) 76%, rgba(4, 12, 30, 0) 100%);
+  background: radial-gradient(closest-side, rgba(4, 12, 30, 0.15) 0%, rgba(4, 12, 30, 0.11) 45%, rgba(4, 12, 30, 0.045) 76%, rgba(4, 12, 30, 0) 100%);
   animation: ls-shadow-in 2.8s ease-in-out 0.6s both;
 }
 
