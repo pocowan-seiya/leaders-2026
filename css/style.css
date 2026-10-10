@@ -1312,6 +1312,11 @@ figure {
   color: var(--ink-violet);
 }
 
+.ls-ov-venue.ls-ov-time {
+  margin-top: 4px;
+  font-variant-numeric: lining-nums;
+}
+
 .ls-ov-venue-label {
   margin-right: 1em;
   font-size: 0.78em;
