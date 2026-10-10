@@ -113,8 +113,22 @@ figure {
   min-height: 100svh;
   overflow: hidden;
   color: var(--on-space);
-  background: var(--deep);
+  /* 写真が届くまでの地 —— 写真をぼかしたような色の流れ(宇宙の紺 → 地平線の光 → 地球の青)。
+     紺一色が先に見えて、あとから写真がパッと出るのを防ぐ */
+  background: linear-gradient(180deg, #131f37 0%, #19355a 17%, #1c5788 28%, #a0d3eb 39%, #c1e6f4 50%, #a3d0e5 61%, #7cb6d5 72%, #589bc3 83%, #3d607f 100%);
   isolation: isolate;
+}
+
+/* 写真は、読み込めてからふわっと出す(index.html の head で読み込みを見張る) */
+.ls-bg-wait .ls-fv-bg,
+.ls-bg-wait .ls-fv-frame {
+  opacity: 0;
+  transition: opacity 1.1s ease;
+}
+
+.ls-bg-wait.ls-bg-ready .ls-fv-bg,
+.ls-bg-wait.ls-bg-ready .ls-fv-frame {
+  opacity: 1;
 }
 
 .ls-fv-bg,
@@ -122,7 +136,7 @@ figure {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: url("../images/space-earth.jpg") 50% 40% / cover no-repeat;
+  background: url("../images/space-earth.webp") 50% 40% / cover no-repeat;
   transform: scale(1.04);
   transform-origin: 50% 48%;
 }
@@ -149,7 +163,7 @@ figure {
 
 /* 窓の中の地球の写真(窓枠なし・明るめ)+ 日付と2行のうしろにもシャドウ —— スマホはこちらが標準。PCは比較用 ?window */
 .ls-window-on .ls-fv-bg {
-  background-image: url("../images/earth-window.jpg");
+  background-image: url("../images/earth-window.webp");
 }
 
 .ls-window-on .ls-fv-frame {
@@ -744,7 +758,7 @@ figure {
   position: fixed;
   inset: 0;
   z-index: 0;
-  background: url("../images/space-earth.jpg") 50% 46% / cover no-repeat;
+  background: url("../images/space-earth.webp") 50% 46% / cover no-repeat;
 }
 
 /* スクロールに合わせて静かに深まる紺のヴェール(--space-dim は JS が更新) */
@@ -1833,12 +1847,17 @@ figure {
 @media (max-width: 767px) {
   /* FV: 中央にまとまった題字。スマホの背景は窓の中の地球(窓枠なし) */
   .ls-fv-bg {
-    background-image: url("../images/earth-window.jpg");
+    background-image: url("../images/earth-window.webp");
     background-position: 50% 50%;
   }
 
   .ls-fv-frame {
     display: none;
+  }
+
+  /* スマホの写真(窓の中の地球)に合わせた、届くまでの地 */
+  .ls-fv {
+    background: linear-gradient(180deg, #1b2337 0%, #21436b 17%, #2586c4 28%, #e6f7fd 37%, #b5e8fa 50%, #79c8ee 61%, #79b8e0 72%, #529dd0 83%, #6199c2 100%);
   }
 
   /* 日付と2行のうしろに、ほんのうっすらのシャドウ(題字のまわりと同じくらいの濃さ)。
