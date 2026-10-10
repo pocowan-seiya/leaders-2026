@@ -3,11 +3,10 @@
   var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var skipAnimation = prefersReduced || window.location.search.indexOf("noanim") !== -1;
 
-  // 比較用: ?oval = 題字のまわりを楕円にうっすら暗くする前の形 / ?line1 = PCの題字を1行に
-  if (window.location.search.indexOf("oval") !== -1) document.querySelector(".ls").classList.add("ls-oval-on");
+  // 比較用: ?line1 = PCの題字を1行に
   if (window.location.search.indexOf("line1") !== -1) document.querySelector(".ls").classList.add("ls-line1");
-  // 比較用: ?facts0 = クラス概要を前の淡い地球の背景で
-  if (window.location.search.indexOf("facts0") !== -1) document.getElementById("facts").classList.remove("ls-facts-window");
+  // 比較用: ?fv0 = ファーストビューを前の背景(窓枠ごと見た地球)で
+  if (window.location.search.indexOf("fv0") !== -1) document.querySelector(".ls").classList.add("ls-fv0");
 
   // 1. スクロールで静かに現れる(JS が動かなくても全文は読める)
   var targets = document.querySelectorAll(".ls-reveal");

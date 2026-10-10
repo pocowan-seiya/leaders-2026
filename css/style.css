@@ -121,7 +121,8 @@ figure {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: url("../images/space-earth.jpg") 50% 40% / cover no-repeat;
+  /* 試し(10/10): セイヤさんの送ってくれた、窓の中の地球の写真。前の写真(窓枠あり)は ?fv0 で */
+  background: url("../images/earth-window.jpg") 50% 40% / cover no-repeat;
   transform: scale(1.04);
   animation: ls-drift 40s ease-in-out infinite alternate;
 }
@@ -133,6 +134,11 @@ figure {
   to {
     transform: scale(1.09) translate3d(-1%, -0.6%, 0);
   }
+}
+
+/* 比較用 ?fv0: 前の背景(宇宙船の窓枠ごと見た地球) */
+.ls-fv0 .ls-fv-bg {
+  background-image: url("../images/space-earth.jpg");
 }
 
 /* かすかにまたたく星 */
@@ -162,35 +168,17 @@ figure {
   }
 }
 
-/* 下端は次のセクションの白へ溶かす(題字の背面は .ls-fv-depth) */
+/* 文字のまわりを静かに深め、下端は光の白へ溶かす。文字には影を入れない */
 .ls-fv-veil {
   position: absolute;
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(250, 252, 253, 0) 82%, rgba(250, 252, 253, 0.55) 93%, var(--ground) 100%);
-}
-
-/* 比較用 ?oval: 前の、文字のまわりだけ楕円にうっすら暗くする形 */
-.ls-oval-on .ls-fv-veil {
+  /* 暗くするのは、明るい地球の上に乗る文字のまわりだけ(題字〜日付〜2行)。
+     それ以外の地球と宇宙は明るいまま。下端は次のセクションの白へつなぐ */
   background:
     linear-gradient(180deg, rgba(250, 252, 253, 0) 82%, rgba(250, 252, 253, 0.55) 93%, var(--ground) 100%),
     radial-gradient(ellipse 50% 32% at 50% 58%, rgba(4, 12, 30, 0.24) 0%, rgba(4, 12, 30, 0.16) 50%, rgba(4, 12, 30, 0.06) 78%, rgba(4, 12, 30, 0) 100%);
-}
-
-.ls-oval-on .ls-fv-depth {
-  display: none;
-}
-
-/* 題字の背面 —— 黒で暗くするのではなく、文字のうしろの地球が海の青へ深まる
-   (青を乗算で重ねる: 白い雲は空色に、海はより深い青に。地球の明るさと色はそのまま) */
-.ls-fv-depth {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  mix-blend-mode: multiply;
-  background: radial-gradient(ellipse 60% 40% at 50% 57%, rgba(20, 80, 185, 0.75) 0%, rgba(20, 80, 185, 0.5) 45%, rgba(20, 80, 185, 0.18) 76%, rgba(20, 80, 185, 0) 100%);
 }
 
 .ls-fv-center {
@@ -1202,92 +1190,6 @@ figure {
     url("../images/earth-clouds.jpg") 50% 0% / cover no-repeat;
 }
 
-/* クラス概要の背景 —— 宇宙船の窓から見た地球(セイヤさんの送ってくれた写真)。
-   白から宇宙へ入り、地球を見下ろしながら読み、また白へ戻る。比較用 ?facts0 で前の淡い背景 */
-.ls-facts-window .ls-facts-bg {
-  background:
-    linear-gradient(180deg, rgba(4, 14, 34, 0.18) 0%, rgba(4, 14, 34, 0.26) 50%, rgba(4, 14, 34, 0.3) 100%),
-    url("../images/earth-window.jpg") 50% 30% / cover no-repeat;
-}
-
-/* PCは写真を少し大きく敷いて、下端の座席は切り、窓の中の地球だけを見せる */
-@media (min-width: 768px) {
-  .ls-facts-window .ls-facts-bg {
-    background-position: 0 0, 50% 0;
-    background-size: auto, max(100%, 2400px) auto;
-  }
-}
-
-/* 文字の並ぶ中央の帯だけ、地球が海の青へ深まる(FVと同じ、青の乗算) */
-.ls-facts-window .ls-facts-bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  mix-blend-mode: multiply;
-  background: radial-gradient(ellipse 46% 52% at 50% 54%, rgba(20, 80, 185, 0.7) 0%, rgba(20, 80, 185, 0.5) 50%, rgba(20, 80, 185, 0.16) 80%, rgba(20, 80, 185, 0) 100%);
-}
-
-/* 上下は、前後の白から霞ごしに(段差が出ないよう長く) */
-.ls-facts-window .ls-facts-bg::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(
-    180deg,
-    var(--ground) 0,
-    rgba(240, 246, 250, 0.9) 70px,
-    rgba(222, 236, 247, 0.66) 150px,
-    rgba(200, 224, 244, 0.38) 240px,
-    rgba(190, 218, 242, 0.14) 330px,
-    rgba(190, 218, 242, 0) 420px,
-    rgba(250, 252, 253, 0) calc(100% - 380px),
-    rgba(250, 252, 253, 0.18) calc(100% - 290px),
-    rgba(250, 252, 253, 0.5) calc(100% - 190px),
-    rgba(250, 252, 253, 0.84) calc(100% - 90px),
-    var(--ground) 100%
-  );
-}
-
-/* 窓の地球の上では、文字は白、見出しの小さなことばは淡い金 */
-.ls-facts-window .ls-inner {
-  text-shadow: 0 1px 2px rgba(2, 12, 34, 0.5);
-}
-
-.ls-facts-window .ls-h2,
-.ls-facts-window .ls-ov-value,
-.ls-facts-window .ls-ov-venue,
-.ls-facts-window .ls-date-day {
-  color: #ffffff;
-}
-
-.ls-facts-window .ls-ov-label,
-.ls-facts-window .ls-ov-venue-label,
-.ls-facts-window .ls-date-no {
-  color: var(--dawn);
-}
-
-.ls-facts-window .ls-ov-sub {
-  color: rgba(255, 255, 255, 0.92);
-}
-
-.ls-facts-window .ls-ov-note {
-  color: rgba(238, 245, 252, 0.88);
-}
-
-.ls-facts-window .ls-mark::before {
-  border-top-color: rgba(243, 217, 164, 0.6);
-}
-
-.ls-facts-window .ls-ov-row:not(.ls-ov-first)::before {
-  background: linear-gradient(90deg, rgba(243, 217, 164, 0) 0%, rgba(243, 217, 164, 0.7) 50%, rgba(243, 217, 164, 0) 100%);
-}
-
-.ls-facts-window .ls-date {
-  border-bottom-color: rgba(243, 217, 164, 0.3);
-}
-
 .ls-facts {
   /* 四角い枠で囲わず、光の罫で区切る —— 「説明書き」ではなく、この時空の輪郭として */
   margin: 0 auto;
@@ -1880,17 +1782,9 @@ figure {
   }
 
   .ls-fv-veil {
-    background: linear-gradient(180deg, rgba(250, 252, 253, 0) 86%, rgba(250, 252, 253, 0.6) 95%, var(--ground) 100%);
-  }
-
-  .ls-oval-on .ls-fv-veil {
     background:
       linear-gradient(180deg, rgba(250, 252, 253, 0) 86%, rgba(250, 252, 253, 0.6) 95%, var(--ground) 100%),
       radial-gradient(ellipse 75% 26% at 50% 47%, rgba(4, 12, 30, 0.24) 0%, rgba(4, 12, 30, 0.16) 45%, rgba(4, 12, 30, 0.06) 75%, rgba(4, 12, 30, 0) 100%);
-  }
-
-  .ls-fv-depth {
-    background: radial-gradient(ellipse 90% 30% at 50% 54%, rgba(20, 80, 185, 0.75) 0%, rgba(20, 80, 185, 0.5) 45%, rgba(20, 80, 185, 0.18) 76%, rgba(20, 80, 185, 0) 100%);
   }
 
   .ls-fv-center {
