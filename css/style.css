@@ -1381,6 +1381,11 @@ figure {
   font-variant-numeric: lining-nums;
 }
 
+/* 時間のすぐ下に、小さく(終わりはきっちりではなく、延長することもある) */
+.ls-ov-time-note {
+  margin-top: 2px;
+}
+
 .ls-ov-venue-label {
   margin-right: 1em;
   font-size: 0.78em;
