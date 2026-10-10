@@ -117,27 +117,43 @@ figure {
   isolation: isolate;
 }
 
-.ls-fv-bg {
+.ls-fv-bg,
+.ls-fv-frame {
   position: absolute;
   inset: 0;
   z-index: 0;
   background: url("../images/space-earth.jpg") 50% 40% / cover no-repeat;
   transform: scale(1.04);
-  animation: ls-drift 40s ease-in-out infinite alternate;
+  transform-origin: 50% 48%;
 }
 
-@keyframes ls-drift {
+/* 地球に近づいていく —— 窓の外の地球が、ぐーっと大きくなって迫ってくる(最初は分かるくらいに、だんだんゆっくり) */
+.ls-fv-bg {
+  animation: ls-approach 32s cubic-bezier(0.3, 0.12, 0.22, 1) 0.3s both;
+}
+
+@keyframes ls-approach {
   from {
-    transform: scale(1.04) translate3d(0, 0, 0);
+    transform: scale(1.04);
   }
   to {
-    transform: scale(1.09) translate3d(-1%, -0.6%, 0);
+    transform: scale(1.3);
   }
+}
+
+/* 窓枠と手前の座席は動かない(窓の内側をくり抜いた同じ写真を、上に重ねる) */
+.ls-fv-frame {
+  pointer-events: none;
+  background-image: url("../images/space-earth-frame.webp");
 }
 
 /* 窓の中の地球の写真(窓枠なし・明るめ)+ 日付と2行のうしろにもシャドウ —— スマホはこちらが標準。PCは比較用 ?window */
 .ls-window-on .ls-fv-bg {
   background-image: url("../images/earth-window.jpg");
+}
+
+.ls-window-on .ls-fv-frame {
+  display: none;
 }
 
 /* かすかにまたたく星 */
@@ -1804,6 +1820,10 @@ figure {
   .ls-fv-bg {
     background-image: url("../images/earth-window.jpg");
     background-position: 50% 50%;
+  }
+
+  .ls-fv-frame {
+    display: none;
   }
 
   /* 日付と2行は、明るい雲の上でもはっきり読めるよう、うしろのシャドウを少し深く広く */
