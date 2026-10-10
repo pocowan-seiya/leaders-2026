@@ -239,25 +239,25 @@ figure {
 
 .ls-fv-title-ja {
   font-family: var(--font-mincho);
-  /* 線を一段太く —— 地球の上に、凛と立つ存在感 */
-  font-weight: 800;
+  font-weight: 700;
   font-size: clamp(26px, min(4vw, 6.9vh), 56px);
   line-height: 1.35;
-  letter-spacing: 0.15em;
-  text-indent: 0.15em;
+  letter-spacing: 0.14em;
+  text-indent: 0.14em;
   white-space: nowrap;
-  /* 白一色。上の層は、ときどき文字を流れる夜明けの黄金の光(ワクワク) */
+  /* 輪郭はくっきり(影・にじみは入れない)。白の中に、下端だけ夜明けの黄金。
+     上の層は、ときどき文字を流れる光の帯 */
   background:
-    linear-gradient(105deg, rgba(255, 236, 190, 0) 0%, rgba(255, 236, 190, 0) 42%, #ffe2a6 50%, rgba(255, 236, 190, 0) 58%, rgba(255, 236, 190, 0) 100%) 100% 0 / 260% 100% no-repeat,
+    linear-gradient(105deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 45%, #ffffff 50%, rgba(255, 255, 255, 0) 55%, rgba(255, 255, 255, 0) 100%) 100% 0 / 260% 100% no-repeat,
     linear-gradient(180deg, #ffffff 0%, #ffffff 100%) 0 0 / 100% 100% no-repeat;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  /* にじませず、くっきりした縁で雲の上でも輪郭を立てる */
-  filter: drop-shadow(0 0 1px rgba(2, 10, 30, 0.55)) drop-shadow(0 2px 2.5px rgba(2, 10, 30, 0.5));
+  /* 霞を薄くしたぶん、にじまない細い縁で輪郭を立てる */
+  filter: drop-shadow(0 1px 1.5px rgba(2, 10, 30, 0.55));
   animation:
     ls-title-in 2.2s cubic-bezier(0.22, 0.61, 0.36, 1) 0.8s both,
-    ls-title-sweep 6s ease-in-out 3.4s infinite;
+    ls-title-sweep 7s ease-in-out 3.4s infinite;
 }
 
 /* 光の中から浮かび上がり、最後はくっきりと立つ */
@@ -265,15 +265,15 @@ figure {
   from {
     opacity: 0;
     transform: scale(1.03);
-    filter: blur(10px) drop-shadow(0 0 1px rgba(2, 10, 30, 0)) drop-shadow(0 2px 2.5px rgba(2, 10, 30, 0));
+    filter: blur(10px) drop-shadow(0 1px 1.5px rgba(2, 10, 30, 0));
   }
   60% {
-    filter: blur(0) drop-shadow(0 0 1px rgba(2, 10, 30, 0.55)) drop-shadow(0 2px 2.5px rgba(2, 10, 30, 0.5));
+    filter: blur(0) drop-shadow(0 1px 1.5px rgba(2, 10, 30, 0.55));
   }
   to {
     opacity: 1;
     transform: none;
-    filter: drop-shadow(0 0 1px rgba(2, 10, 30, 0.55)) drop-shadow(0 2px 2.5px rgba(2, 10, 30, 0.5));
+    filter: drop-shadow(0 1px 1.5px rgba(2, 10, 30, 0.55));
   }
 }
 
@@ -295,7 +295,6 @@ figure {
   margin-top: clamp(12px, 2vh, 20px);
   font-family: var(--font-display);
   font-weight: 600;
-  -webkit-text-stroke: 0.3px currentColor;
   font-size: clamp(13px, 1.35vw, 19px);
   letter-spacing: 0.44em;
   text-transform: uppercase;
@@ -378,33 +377,25 @@ figure {
 .ls-fv-name,
 .ls-fv-title-en,
 .ls-fv-date {
-  text-shadow:
-    0 0 1px rgba(2, 10, 30, 0.6),
-    0 1px 2.5px rgba(2, 10, 30, 0.55);
+  text-shadow: 0 1px 1.5px rgba(2, 10, 30, 0.55);
 }
 
 /* 期間と構成 —— 題字と同じ凛とした白で、光の粒で区切る */
 .ls-fv-meta {
   margin-top: 16px;
   font-family: var(--font-mincho);
-  font-weight: 700;
-  font-size: clamp(15px, 1.4vw, 20px);
+  font-weight: 600;
+  font-size: clamp(15px, 1.35vw, 19px);
   line-height: 1.9;
   letter-spacing: 0.16em;
   color: #ffffff;
-  text-shadow:
-    0 0 1px rgba(2, 10, 30, 0.6),
-    0 1px 2.5px rgba(2, 10, 30, 0.55);
-}
-
-.ls-fv-meta-sp {
-  display: none;
+  text-shadow: 0 1px 1.5px rgba(2, 10, 30, 0.55);
 }
 
 .ls-fv-amp {
   margin: 0 0.25em;
-  font-weight: 600;
-  color: #ffe2a6;
+  font-weight: 500;
+  color: var(--dawn);
 }
 
 /* 現れる順番: 名前と手書き → 題字が光の中から → 英語・弧・日付 */
@@ -1821,8 +1812,8 @@ figure {
     justify-content: center;
     gap: 10px;
     margin-top: 16px;
-    font-size: 13px;
-    letter-spacing: 0.24em;
+    font-size: 12px;
+    letter-spacing: 0.3em;
   }
 
   .ls-fv-title-en::before,
@@ -1833,7 +1824,7 @@ figure {
   }
 
   .ls-fv-title-en::after {
-    margin-left: -0.24em;
+    margin-left: -0.3em;
   }
 
   .ls-fv-rule {
@@ -1847,26 +1838,9 @@ figure {
   }
 
   .ls-fv-meta {
-    margin-top: 16px;
-    font-size: min(calc((100vw - 40px) / 19.6), 17px);
-    line-height: 1.85;
-    letter-spacing: 0.04em;
-  }
-
-  .ls-fv-meta-sp {
-    white-space: nowrap;
-  }
-
-  .ls-fv-amp {
-    margin: 0 0.1em;
-  }
-
-  .ls-fv-meta-pc {
-    display: none;
-  }
-
-  .ls-fv-meta-sp {
-    display: inline;
+    margin-top: 14px;
+    font-size: 13.5px;
+    letter-spacing: 0.06em;
   }
 
   .ls-fv-scroll {
