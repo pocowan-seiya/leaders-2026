@@ -121,8 +121,7 @@ figure {
   position: absolute;
   inset: 0;
   z-index: 0;
-  /* 試し(10/10): セイヤさんの送ってくれた、窓の中の地球の写真。前の写真(窓枠あり)は ?fv0 で */
-  background: url("../images/earth-window.jpg") 50% 40% / cover no-repeat;
+  background: url("../images/space-earth.jpg") 50% 40% / cover no-repeat;
   transform: scale(1.04);
   animation: ls-drift 40s ease-in-out infinite alternate;
 }
@@ -136,9 +135,9 @@ figure {
   }
 }
 
-/* 比較用 ?fv0: 前の背景(宇宙船の窓枠ごと見た地球) */
-.ls-fv0 .ls-fv-bg {
-  background-image: url("../images/space-earth.jpg");
+/* 比較用 ?window: 窓の中の地球の写真(窓枠なし・明るめ)+ 日付と2行のうしろにもうっすら黒のシャドウ */
+.ls-window-on .ls-fv-bg {
+  background-image: url("../images/earth-window.jpg");
 }
 
 /* かすかにまたたく星 */
@@ -397,7 +396,7 @@ figure {
   text-shadow: 0 1px 1.5px rgba(2, 10, 30, 0.55);
 }
 
-/* 日付と2行のまとまり —— 明るい雲の上でも読めるよう、うしろに題字と同じうっすら黒のシャドウ */
+/* 日付と2行のまとまり */
 .ls-fv-info {
   position: relative;
   display: flex;
@@ -405,7 +404,8 @@ figure {
   align-items: center;
 }
 
-.ls-fv-info::before {
+/* 比較用 ?window のときだけ: 明るい雲の上でも読めるよう、うしろに題字と同じうっすら黒のシャドウ */
+.ls-window-on .ls-fv-info::before {
   content: "";
   position: absolute;
   z-index: -1;
