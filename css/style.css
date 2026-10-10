@@ -168,8 +168,11 @@ figure {
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  /* 地球の上に黒いオーバーレイはかけない。下端だけ次のセクションの白へつなぐ */
-  background: linear-gradient(180deg, rgba(250, 252, 253, 0) 82%, rgba(250, 252, 253, 0.55) 93%, var(--ground) 100%);
+  /* 画面全体に、うすく均一な黒のオーバーレイ(地球の明るさは残しつつ、白い文字が雲にとけないように)。
+     下端は次のセクションの白へつなぐ */
+  background:
+    linear-gradient(180deg, rgba(250, 252, 253, 0) 82%, rgba(250, 252, 253, 0.55) 93%, var(--ground) 100%),
+    linear-gradient(rgba(4, 12, 30, 0.26), rgba(4, 12, 30, 0.26));
 }
 
 /* 比較用: ?veil で、前の(うっすら暗いオーバーレイありの)状態 */
@@ -1752,7 +1755,9 @@ figure {
   }
 
   .ls-fv-veil {
-    background: linear-gradient(180deg, rgba(250, 252, 253, 0) 86%, rgba(250, 252, 253, 0.6) 95%, var(--ground) 100%);
+    background:
+      linear-gradient(180deg, rgba(250, 252, 253, 0) 86%, rgba(250, 252, 253, 0.6) 95%, var(--ground) 100%),
+      linear-gradient(rgba(4, 12, 30, 0.26), rgba(4, 12, 30, 0.26));
   }
 
   .ls-veil-on .ls-fv-veil {
