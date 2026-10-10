@@ -339,6 +339,47 @@ figure {
   }
 }
 
+/* 題字の下の金の帯 —— 題字を際立たせる一本の光。中央から左右へ、すっと引かれて現れる */
+.ls-fv-band {
+  position: relative;
+  align-self: stretch;
+  height: 3px;
+  margin-top: clamp(14px, 2.2vh, 22px);
+  background: linear-gradient(90deg, rgba(176, 145, 79, 0) 0%, rgba(214, 182, 112, 0.9) 16%, #f6e2b3 50%, rgba(214, 182, 112, 0.9) 84%, rgba(176, 145, 79, 0) 100%);
+  filter: drop-shadow(0 1px 1px rgba(2, 10, 30, 0.35));
+  animation: ls-band-in 1.6s cubic-bezier(0.22, 0.61, 0.36, 1) 2s both;
+}
+
+/* 帯の中を、ときどき光が流れる(題字の光の帯と同じ間合い) */
+.ls-fv-band::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(255, 250, 235, 0) 0%, rgba(255, 250, 235, 0.95) 50%, rgba(255, 250, 235, 0) 100%) -45% 0 / 30% 100% no-repeat;
+  animation: ls-band-sweep 7s ease-in-out 4s infinite;
+}
+
+@keyframes ls-band-in {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ls-band-sweep {
+  0% {
+    background-position: -45% 0;
+  }
+  32%,
+  100% {
+    background-position: 145% 0;
+  }
+}
+
 .ls-fv-title-en {
   display: inline-flex;
   align-items: center;
@@ -1828,6 +1869,8 @@ figure {
   .ls-fv-stars,
   .ls-fv-title-ja,
   .ls-fv-in,
+  .ls-fv-band,
+  .ls-fv-band::after,
   .ls-fv-info::before,
   .ls-fv-scroll::after,
   .ls-cta,
