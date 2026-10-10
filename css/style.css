@@ -135,7 +135,7 @@ figure {
   }
 }
 
-/* 比較用 ?window: 窓の中の地球の写真(窓枠なし・明るめ)+ 日付と2行のうしろにもうっすら黒のシャドウ */
+/* 窓の中の地球の写真(窓枠なし・明るめ)+ 日付と2行のうしろにもシャドウ —— スマホはこちらが標準。PCは比較用 ?window */
 .ls-window-on .ls-fv-bg {
   background-image: url("../images/earth-window.jpg");
 }
@@ -404,9 +404,10 @@ figure {
   align-items: center;
 }
 
-/* 比較用 ?window のときだけ: 明るい雲の上でも読めるよう、うしろに題字と同じうっすら黒のシャドウ */
-.ls-window-on .ls-fv-info::before {
-  content: "";
+/* 明るい雲の上でも読めるよう、うしろに題字と同じうっすら黒のシャドウ。
+   PC(窓枠ありの地球)では不要 → スマホと ?window のときだけ出す */
+.ls-fv-info::before {
+  content: none;
   position: absolute;
   z-index: -1;
   left: 50%;
@@ -417,6 +418,10 @@ figure {
   pointer-events: none;
   background: radial-gradient(closest-side, rgba(4, 12, 30, 0.32) 0%, rgba(4, 12, 30, 0.26) 40%, rgba(4, 12, 30, 0.1) 74%, rgba(4, 12, 30, 0) 100%);
   animation: ls-fv-fade 1.4s cubic-bezier(0.22, 0.61, 0.36, 1) 2.6s both;
+}
+
+.ls-window-on .ls-fv-info::before {
+  content: "";
 }
 
 /* 期間と構成 —— 題字と同じ凛とした白で、光の粒で区切る */
@@ -1798,9 +1803,26 @@ figure {
    ============================================================ */
 
 @media (max-width: 767px) {
-  /* FV: 中央にまとまった題字 */
+  /* FV: 中央にまとまった題字。スマホの背景は窓の中の地球(窓枠なし) */
   .ls-fv-bg {
+    background-image: url("../images/earth-window.jpg");
     background-position: 50% 50%;
+  }
+
+  /* 日付と2行は、明るい雲の上でもはっきり読めるよう、うしろのシャドウを少し深く広く */
+  .ls-fv-info::before {
+    content: "";
+    width: calc(100% + 300px);
+    height: calc(100% + 170px);
+    background: radial-gradient(closest-side, rgba(4, 12, 30, 0.5) 0%, rgba(4, 12, 30, 0.4) 45%, rgba(4, 12, 30, 0.16) 76%, rgba(4, 12, 30, 0) 100%);
+  }
+
+  /* 細い線の数字と小さな文字の輪郭を、にじませずに少しだけ締める */
+  .ls-fv-date,
+  .ls-fv-meta {
+    text-shadow:
+      0 1px 1.5px rgba(2, 10, 30, 0.6),
+      0 0 1px rgba(2, 10, 30, 0.45);
   }
 
   .ls-fv-veil {
