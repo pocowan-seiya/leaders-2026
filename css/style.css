@@ -421,7 +421,7 @@ figure {
 }
 
 /* 明るい雲の上でも読めるよう、うしろに題字と同じうっすら黒のシャドウ。
-   PC(窓枠ありの地球)では不要 → スマホと ?window のときだけ出す */
+   いまは比較用 ?window(PC)のときだけ出す */
 .ls-fv-info::before {
   content: none;
   position: absolute;
@@ -1824,13 +1824,6 @@ figure {
 
   .ls-fv-frame {
     display: none;
-  }
-
-  /* 日付と2行は、明るい雲の上でもはっきり読めるよう、うしろのシャドウを少し深く広く */
-  .ls-fv-info::before {
-    content: "";
-    inset: -85px -150px;
-    background: radial-gradient(closest-side, rgba(4, 12, 30, 0.5) 0%, rgba(4, 12, 30, 0.4) 45%, rgba(4, 12, 30, 0.16) 76%, rgba(4, 12, 30, 0) 100%);
   }
 
   /* 細い線の数字と小さな文字の輪郭を、にじませずに少しだけ締める */
