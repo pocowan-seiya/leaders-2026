@@ -420,8 +420,8 @@ figure {
   align-items: center;
 }
 
-/* 明るい雲の上でも読めるよう、うしろに題字と同じうっすら黒のシャドウ。
-   いまは比較用 ?window(PC)のときだけ出す */
+/* 明るい雲の上でも読めるよう、うしろにうっすら黒のシャドウ。スマホと比較用 ?window(PC)のときだけ出す。
+   日付が現れるより先に、題字といっしょに、ゆっくり静かににじみ出てくる(パッと出ない) */
 .ls-fv-info::before {
   content: none;
   position: absolute;
@@ -430,7 +430,16 @@ figure {
   inset: -95px -180px;
   pointer-events: none;
   background: radial-gradient(closest-side, rgba(4, 12, 30, 0.32) 0%, rgba(4, 12, 30, 0.26) 40%, rgba(4, 12, 30, 0.1) 74%, rgba(4, 12, 30, 0) 100%);
-  animation: ls-fv-fade 1.4s cubic-bezier(0.22, 0.61, 0.36, 1) 2.6s both;
+  animation: ls-shadow-in 2.8s ease-in-out 0.6s both;
+}
+
+@keyframes ls-shadow-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .ls-window-on .ls-fv-info::before {
@@ -1803,6 +1812,7 @@ figure {
   .ls-fv-stars,
   .ls-fv-title-ja,
   .ls-fv-in,
+  .ls-fv-info::before,
   .ls-fv-scroll::after,
   .ls-cta,
   .ls-cta::before {
@@ -1829,6 +1839,13 @@ figure {
 
   .ls-fv-frame {
     display: none;
+  }
+
+  /* 日付と2行のうしろに、ほんのうっすらのシャドウ(題字のまわりと同じくらいの濃さ) */
+  .ls-fv-info::before {
+    content: "";
+    inset: -85px -150px;
+    background: radial-gradient(closest-side, rgba(4, 12, 30, 0.24) 0%, rgba(4, 12, 30, 0.18) 45%, rgba(4, 12, 30, 0.07) 76%, rgba(4, 12, 30, 0) 100%);
   }
 
   /* 細い線の数字と小さな文字の輪郭を、にじませずに少しだけ締める */
