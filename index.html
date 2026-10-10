@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
   <!-- ファーストビューの写真は最初に取りに行く(PC: 窓枠ありの地球+窓枠 / スマホ: 窓の中の地球) -->
-  <link rel="preload" as="image" href="images/space-earth.webp" media="(min-width: 768px)" fetchpriority="high">
+  <link rel="preload" as="image" href="images/space-earth-earth.webp" media="(min-width: 768px)" fetchpriority="high">
   <link rel="preload" as="image" href="images/space-earth-frame.webp" media="(min-width: 768px)">
   <link rel="preload" as="image" href="images/earth-window.webp" media="(max-width: 767px)" fetchpriority="high">
   <script>
@@ -25,7 +25,7 @@
       var root = document.documentElement;
       var ready = function () { root.classList.add("ls-bg-ready"); };
       var sp = window.matchMedia("(max-width: 767px)").matches || location.search.indexOf("window") !== -1;
-      var srcs = sp ? ["images/earth-window.webp"] : ["images/space-earth.webp", "images/space-earth-frame.webp"];
+      var srcs = sp ? ["images/earth-window.webp"] : ["images/space-earth-earth.webp", "images/space-earth-frame.webp"];
       var left = srcs.length;
       root.classList.add("ls-bg-wait");
       srcs.forEach(function (src) {
@@ -36,7 +36,7 @@
       setTimeout(ready, 4000);
     })();
   </script>
-  <link rel="stylesheet" href="css/style.css?v=20261010193000">
+  <link rel="stylesheet" href="css/style.css?v=20261010200000">
 </head>
 <body>
 <main class="ls">

@@ -155,7 +155,12 @@ figure {
   }
 }
 
-/* 窓枠と手前の座席は動かない(窓の内側をくり抜いた同じ写真を、上に重ねる) */
+/* 動く地球のほうは、座席を消して雲で埋めた写真(座席が二重に見えないように) */
+.ls-fv-bg {
+  background-image: url("../images/space-earth-earth.webp");
+}
+
+/* 窓枠と手前の座席は動かない(窓の内側と、座席のまわりの地球をくり抜いた同じ写真を、上に重ねる) */
 .ls-fv-frame {
   pointer-events: none;
   background-image: url("../images/space-earth-frame.webp");
