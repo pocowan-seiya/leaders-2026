@@ -3,6 +3,9 @@
   var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var skipAnimation = prefersReduced || window.location.search.indexOf("noanim") !== -1;
 
+  // 比較用: ?veil でファーストビューに前のうっすら暗いオーバーレイをかける
+  if (window.location.search.indexOf("veil") !== -1) document.querySelector(".ls").classList.add("ls-veil-on");
+
   // 1. スクロールで静かに現れる(JS が動かなくても全文は読める)
   var targets = document.querySelectorAll(".ls-reveal");
   // ファーストビューの現れ方も止めて、最初から全部見せる

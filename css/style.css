@@ -168,6 +168,12 @@ figure {
   inset: 0;
   z-index: 2;
   pointer-events: none;
+  /* 地球の上に黒いオーバーレイはかけない。下端だけ次のセクションの白へつなぐ */
+  background: linear-gradient(180deg, rgba(250, 252, 253, 0) 82%, rgba(250, 252, 253, 0.55) 93%, var(--ground) 100%);
+}
+
+/* 比較用: ?veil で、前の(うっすら暗いオーバーレイありの)状態 */
+.ls-veil-on .ls-fv-veil {
   background:
     radial-gradient(60% 46% at 50% 50%, rgba(5, 14, 36, 0.34) 0%, rgba(5, 14, 36, 0.16) 62%, rgba(5, 14, 36, 0) 100%),
     linear-gradient(180deg, rgba(5, 14, 36, 0.3) 0%, rgba(5, 14, 36, 0.06) 40%, rgba(5, 14, 36, 0) 70%),
@@ -231,7 +237,7 @@ figure {
 .ls-fv-title-ja {
   font-family: var(--font-mincho);
   font-weight: 700;
-  font-size: clamp(26px, min(4.4vw, 7.6vh), 62px);
+  font-size: clamp(26px, min(4vw, 6.9vh), 56px);
   line-height: 1.35;
   letter-spacing: 0.14em;
   text-indent: 0.14em;
@@ -1746,6 +1752,10 @@ figure {
   }
 
   .ls-fv-veil {
+    background: linear-gradient(180deg, rgba(250, 252, 253, 0) 86%, rgba(250, 252, 253, 0.6) 95%, var(--ground) 100%);
+  }
+
+  .ls-veil-on .ls-fv-veil {
     background:
       linear-gradient(180deg, rgba(5, 14, 36, 0.42) 0%, rgba(5, 14, 36, 0.2) 46%, rgba(5, 14, 36, 0.08) 72%, rgba(5, 14, 36, 0) 84%),
       linear-gradient(180deg, rgba(250, 252, 253, 0) 86%, rgba(250, 252, 253, 0.6) 95%, var(--ground) 100%);
