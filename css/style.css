@@ -339,24 +339,37 @@ figure {
   }
 }
 
-/* 題字の下の金の帯 —— 題字を際立たせる一本の光。中央から左右へ、すっと引かれて現れる */
+/* 題字の下の金の帯 —— 題字を際立たせる一本の光。中央から左右へ、すっと引かれて現れる(流れる光の動きはなし) */
 .ls-fv-band {
   position: relative;
   align-self: stretch;
-  height: 3px;
+  height: 4px;
   margin-top: clamp(14px, 2.2vh, 22px);
-  background: linear-gradient(90deg, rgba(176, 145, 79, 0) 0%, rgba(214, 182, 112, 0.9) 16%, #f6e2b3 50%, rgba(214, 182, 112, 0.9) 84%, rgba(176, 145, 79, 0) 100%);
-  filter: drop-shadow(0 1px 1px rgba(2, 10, 30, 0.35));
   animation: ls-band-in 1.6s cubic-bezier(0.22, 0.61, 0.36, 1) 2s both;
 }
 
-/* 帯の中を、ときどき光が流れる(題字の光の帯と同じ間合い) */
+/* 帯そのもの —— 金の光沢(上がきらめき、下が深い金)と、中央のいちばん明るい光。両端は宇宙へ溶ける */
 .ls-fv-band::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(255, 250, 235, 0) 0%, rgba(255, 250, 235, 0.95) 50%, rgba(255, 250, 235, 0) 100%) -45% 0 / 30% 100% no-repeat;
-  animation: ls-band-sweep 7s ease-in-out 4s infinite;
+  border-radius: 2px;
+  background:
+    radial-gradient(ellipse 32% 140% at 50% 50%, rgba(255, 253, 244, 0.95) 0%, rgba(255, 253, 244, 0) 100%),
+    linear-gradient(180deg, #fff7df 0%, #f4dca6 45%, #c39f58 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 15%, #000 85%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 15%, #000 85%, transparent 100%);
+}
+
+/* 帯のまわりに、ほのかな金の光(光として輝いて見えるように) */
+.ls-fv-band::before {
+  content: "";
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  top: -9px;
+  bottom: -9px;
+  background: radial-gradient(closest-side, rgba(255, 226, 160, 0.5) 0%, rgba(255, 226, 160, 0.2) 50%, rgba(255, 226, 160, 0) 100%);
 }
 
 @keyframes ls-band-in {
@@ -367,16 +380,6 @@ figure {
   to {
     opacity: 1;
     transform: none;
-  }
-}
-
-@keyframes ls-band-sweep {
-  0% {
-    background-position: -45% 0;
-  }
-  32%,
-  100% {
-    background-position: 145% 0;
   }
 }
 
@@ -1870,7 +1873,6 @@ figure {
   .ls-fv-title-ja,
   .ls-fv-in,
   .ls-fv-band,
-  .ls-fv-band::after,
   .ls-fv-info::before,
   .ls-fv-scroll::after,
   .ls-cta,
