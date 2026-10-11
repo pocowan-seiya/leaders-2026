@@ -265,7 +265,8 @@ figure {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: clamp(48px, 8.5vh, 88px) 0 0;
+  /* PCは1行なので、手書きの「じぶんの宇宙意識を生きる学校」とのあいだを広めに */
+  margin: clamp(64px, 12vh, 124px) 0 0;
   font-weight: 500;
 }
 
@@ -302,6 +303,10 @@ figure {
 
   .ls-line2 .ls-fv-title-ja {
     font-size: clamp(30px, min(4.6vw, 7.6vh), 66px);
+  }
+
+  .ls-line2 .ls-fv-title {
+    margin-top: clamp(48px, 8.5vh, 88px);
   }
 }
 
