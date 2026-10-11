@@ -7,6 +7,37 @@
   if (window.location.search.indexOf("line1") !== -1) document.querySelector(".ls").classList.add("ls-line1");
   if (window.location.search.indexOf("window") !== -1) document.querySelector(".ls").classList.add("ls-window-on");
 
+  // 0. グローバルメニュー: スクロールしたら少し透ける白に / スマホは三本線でパネルを開け閉め
+  var siteHeader = document.querySelector(".ls-site-header");
+  if (siteHeader) {
+    var toggle = siteHeader.querySelector(".ls-nav-toggle");
+    var setScrolled = function () {
+      siteHeader.classList.toggle("is-scrolled", window.scrollY > 8);
+    };
+    var setOpen = function (open) {
+      siteHeader.classList.toggle("ls-nav-open", open);
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.setAttribute("aria-label", open ? "ナビゲーションメニューを閉じる" : "ナビゲーションメニューを開く");
+      document.documentElement.style.overflow = open ? "hidden" : "";
+    };
+    setScrolled();
+    window.addEventListener("scroll", setScrolled, { passive: true });
+    toggle.addEventListener("click", function () {
+      setOpen(!siteHeader.classList.contains("ls-nav-open"));
+    });
+    siteHeader.querySelector(".ls-nav-overlay").addEventListener("click", function () {
+      setOpen(false);
+    });
+    siteHeader.querySelectorAll(".ls-site-nav a").forEach(function (a) {
+      a.addEventListener("click", function () {
+        setOpen(false);
+      });
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") setOpen(false);
+    });
+  }
+
   // 1. スクロールで静かに現れる(JS が動かなくても全文は読める)
   var targets = document.querySelectorAll(".ls-reveal");
   // ファーストビューの現れ方も止めて、最初から全部見せる
