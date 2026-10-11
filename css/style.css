@@ -60,204 +60,6 @@ figure {
   overflow-x: clip;
 }
 
-/* ============================================================
-   グローバルメニュー —— 公式サイト(sekinoayako.art)と同じ見た目・同じ位置
-   PC: 白地に、明朝の青い文字が横一列(いまのページ=リーダーズは水色)。スクロールしても上に残る
-   スマホ: 右上の三本線 → 左から白いパネル(文字は右寄せ)、残りはうすいグレーで覆う
-   ============================================================ */
-
-:root {
-  --site-header-h: 110px;
-  /* ファーストビューの高さの1% (= 画面の高さからメニューを引いた高さ)。FVの大きさ・余白はこれを基準に */
-  --fvh: calc((100vh - var(--site-header-h)) / 100);
-}
-
-@supports (height: 100svh) {
-  :root {
-    --fvh: calc((100svh - var(--site-header-h)) / 100);
-  }
-}
-
-.ls-site-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  height: var(--site-header-h);
-  background: #ffffff;
-  transition: background-color 0.3s ease;
-}
-
-/* スクロールしたら、うしろが少し透ける白に */
-.ls-site-header.is-scrolled {
-  background: rgba(255, 255, 255, 0.82);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-}
-
-.ls-site-nav ul {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin: 0;
-  padding: 41px 24px 0;
-  list-style: none;
-}
-
-.ls-site-nav a {
-  display: flex;
-  align-items: center;
-  height: 49px;
-  padding: 0 13px;
-  font-family: "ｍｓ ｐ明朝", "ms pmincho", "ヒラギノ明朝 pro w3", "hiragino mincho pro", "Hiragino Mincho ProN", "Shippori Mincho", serif;
-  font-feature-settings: normal;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1;
-  color: #0167e4;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: color 0.2s ease;
-}
-
-.ls-site-nav a:hover,
-.ls-site-nav a[aria-current="page"] {
-  color: #0cb2fa;
-}
-
-.ls-nav-toggle,
-.ls-nav-overlay {
-  display: none;
-}
-
-/* 高さの低いノートパソコンでは、メニューを少し上に詰める */
-@media (min-width: 768px) and (max-height: 800px) {
-  :root {
-    --site-header-h: 84px;
-  }
-
-  .ls-site-nav ul {
-    padding-top: 22px;
-  }
-}
-
-@media (max-width: 960px) {
-  .ls-site-nav ul {
-    gap: 6px;
-  }
-
-  .ls-site-nav a {
-    padding: 0 8px;
-    font-size: 15px;
-  }
-}
-
-@media (max-width: 767px) {
-  :root {
-    --site-header-h: 54px;
-  }
-
-  /* 三本線(公式サイトと同じ紺) */
-  .ls-nav-toggle {
-    position: absolute;
-    top: 5px;
-    right: 6px;
-    z-index: 3;
-    display: block;
-    width: 44px;
-    height: 44px;
-    padding: 0;
-    border: 0;
-    background: #ffffff;
-    cursor: pointer;
-  }
-
-  .ls-nav-toggle span {
-    position: absolute;
-    left: 11px;
-    width: 22px;
-    height: 2px;
-    background: #25318d;
-    transition: transform 0.3s ease, opacity 0.2s ease;
-  }
-
-  .ls-nav-toggle span:nth-child(1) {
-    top: 12px;
-  }
-
-  .ls-nav-toggle span:nth-child(2) {
-    top: 21px;
-  }
-
-  .ls-nav-toggle span:nth-child(3) {
-    top: 30px;
-  }
-
-  /* 開いたら × に */
-  .ls-nav-open .ls-nav-toggle span:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
-  }
-
-  .ls-nav-open .ls-nav-toggle span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .ls-nav-open .ls-nav-toggle span:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
-  }
-
-  /* 左から出る白いパネル */
-  .ls-site-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    z-index: 2;
-    width: min(280px, 74vw);
-    background: #ffffff;
-    transform: translateX(-100%);
-    transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
-    overflow-y: auto;
-  }
-
-  .ls-nav-open .ls-site-nav {
-    transform: none;
-  }
-
-  .ls-site-nav ul {
-    display: block;
-    padding: 116px 24px 40px 30px;
-  }
-
-  .ls-site-nav a {
-    justify-content: flex-end;
-    height: 56px;
-    padding: 0;
-    font-size: 15px;
-    color: #178bf0;
-  }
-
-  .ls-site-nav a[aria-current="page"] {
-    color: #162b6f;
-  }
-
-  /* パネルの外は、うすいグレーで覆う(タップで閉じる) */
-  .ls-nav-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 1;
-    display: block;
-    background: rgba(48, 48, 48, 0.6);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-  }
-
-  .ls-nav-open .ls-nav-overlay {
-    opacity: 1;
-    pointer-events: auto;
-  }
-}
-
 /* 語のまとまりで折り返す */
 .nb {
   display: inline-block;
@@ -307,9 +109,8 @@ figure {
 
 .ls-fv {
   position: relative;
-  /* メニューの下から、画面の下まで */
-  min-height: calc(100vh - var(--site-header-h));
-  min-height: calc(100svh - var(--site-header-h));
+  min-height: 100vh;
+  min-height: 100svh;
   overflow: hidden;
   color: var(--on-space);
   /* 写真が届くまでの地 —— 写真をぼかしたような色の流れ(宇宙の紺 → 地平線の光 → 地球の青)。
@@ -421,12 +222,11 @@ figure {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* メニューの下から、画面の下まで */
-  min-height: calc(100vh - var(--site-header-h));
-  min-height: calc(100svh - var(--site-header-h));
+  min-height: 100vh;
+  min-height: 100svh;
   width: min(1180px, 100%);
   margin: 0 auto;
-  padding: clamp(24px, calc(5 * var(--fvh)), 72px) 24px clamp(84px, calc(11 * var(--fvh)), 140px);
+  padding: clamp(64px, 10vh, 96px) 24px clamp(100px, 14vh, 150px);
   text-align: center;
   line-height: 1.4;
 }
@@ -447,7 +247,7 @@ figure {
 .ls-fv-school {
   position: relative;
   z-index: 0;
-  width: min(660px, 86%, calc(70 * var(--fvh)));
+  width: min(660px, 86%, 70vh);
 }
 
 .ls-fv-school img {
@@ -465,7 +265,7 @@ figure {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: clamp(32px, calc(7.5 * var(--fvh)), 88px) 0 0;
+  margin: clamp(48px, 8.5vh, 88px) 0 0;
   font-weight: 500;
 }
 
@@ -473,7 +273,7 @@ figure {
   font-family: var(--font-mincho);
   font-weight: 700;
   /* PCも2行(リーダーズ/スペースシップクラス)。行が短くなるぶん大きく */
-  font-size: clamp(30px, min(4.6vw, calc(7.6 * var(--fvh))), 66px);
+  font-size: clamp(30px, min(4.6vw, 7.6vh), 66px);
   line-height: 1.35;
   letter-spacing: 0.14em;
   text-indent: 0.14em;
@@ -507,7 +307,7 @@ figure {
   }
 
   .ls-line1 .ls-fv-title-ja {
-    font-size: clamp(26px, min(4vw, calc(6.9 * var(--fvh))), 56px);
+    font-size: clamp(26px, min(4vw, 6.9vh), 56px);
   }
 }
 
@@ -544,7 +344,7 @@ figure {
   position: relative;
   align-self: stretch;
   height: 4px;
-  margin-top: clamp(14px, calc(2.2 * var(--fvh)), 22px);
+  margin-top: clamp(14px, 2.2vh, 22px);
   animation: ls-band-in 1.6s cubic-bezier(0.22, 0.61, 0.36, 1) 2s both;
 }
 
@@ -587,7 +387,7 @@ figure {
   display: inline-flex;
   align-items: center;
   gap: 16px;
-  margin-top: clamp(12px, calc(2 * var(--fvh)), 20px);
+  margin-top: clamp(12px, 2vh, 20px);
   font-family: var(--font-display);
   font-weight: 600;
   font-size: clamp(13px, 1.35vw, 19px);
@@ -615,7 +415,7 @@ figure {
   position: relative;
   width: 150px;
   height: 22px;
-  margin: clamp(18px, calc(4 * var(--fvh)), 44px) auto 0;
+  margin: clamp(26px, 4.4vh, 44px) auto 0;
 }
 
 .ls-fv-rule::before {
