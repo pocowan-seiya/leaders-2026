@@ -1035,6 +1035,13 @@ figure {
   overflow: hidden;
 }
 
+/* 本文は上のセクションで語っているので、カードは名前と回数だけ —— 中身をカードの縦まん中に */
+.ls-card-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .ls-card-label {
   display: flex;
   justify-content: center;
@@ -1097,7 +1104,9 @@ figure {
 }
 
 .ls-card-main .ls-card-note {
-  border-top-color: rgba(243, 217, 164, 0.25);
+  /* すぐ上に光の罫があるので、罫を二重にしない */
+  border-top: 0;
+  padding-top: 0;
   color: rgba(227, 241, 247, 0.75);
 }
 
