@@ -3,8 +3,8 @@
   var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var skipAnimation = prefersReduced || window.location.search.indexOf("noanim") !== -1;
 
-  // 比較用: ?line1 = PCの題字を1行に / ?window = 窓の中の地球の背景+日付と2行のシャドウ
-  if (window.location.search.indexOf("line1") !== -1) document.querySelector(".ls").classList.add("ls-line1");
+  // 比較用: ?line2 = PCの題字も2行に / ?window = 窓の中の地球の背景+日付と2行のシャドウ
+  if (window.location.search.indexOf("line2") !== -1) document.querySelector(".ls").classList.add("ls-line2");
   if (window.location.search.indexOf("window") !== -1) document.querySelector(".ls").classList.add("ls-window-on");
 
   // 1. スクロールで静かに現れる(JS が動かなくても全文は読める)
